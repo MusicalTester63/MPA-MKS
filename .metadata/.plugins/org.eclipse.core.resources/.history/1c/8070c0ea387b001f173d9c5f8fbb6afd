@@ -102,9 +102,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  const uint8_t morseSOS[32] = {1,0,1,0,1,0,0,1,1,1,0,1,1,1,0,1,1,1,0,0,1,0,1,0,1,0,0,0,0,0,0,0};
+	  const uint8_t morseSOS[32] = {1,0,1,0,1,0,0,1,1,1,0,1,1,1,0,1,1,1,0,0,1,0,1,0,1};
 
-	  for (int i = 0; i < 32; i++) {
+	  for (int i = 0; i < 25; i++) {
 		  if (morseSOS[i] == 1) {
 			  LL_GPIO_SetOutputPin(LD2_GPIO_Port, LD2_Pin);
 		  } else {

@@ -1,4 +1,4 @@
-14:14:48 **** Incremental Build of configuration Debug for project CV01-LED ****
+14:23:23 **** Incremental Build of configuration Debug for project CV01-LED ****
 make -j4 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -Og -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "CV01-LED.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\MPA-MKS\CV01-LED\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV01-LED.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -7,11 +7,11 @@ Finished building target: CV01-LED.elf
 arm-none-eabi-size  CV01-LED.elf 
 arm-none-eabi-objdump -h -S CV01-LED.elf  > "CV01-LED.list"
    text	   data	    bss	    dec	    hex	filename
-   2516	      4	   1564	   4084	    ff4	CV01-LED.elf
+   2504	      4	   1564	   4072	    fe8	CV01-LED.elf
 Finished building: default.size.stdout
  
 Finished building: CV01-LED.list
  
 
-14:14:49 Build Finished. 0 errors, 0 warnings. (took 985ms)
+14:23:24 Build Finished. 0 errors, 0 warnings. (took 981ms)
 

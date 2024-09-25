@@ -104,7 +104,7 @@ int main(void)
   {
 	  const uint8_t morseSOS[32] = {1,0,1,0,1,0,0,1,1,1,0,1,1,1,0,1,1,1,0,0,1,0,1,0,1,0,0,0,0,0,0,0};
 
-	  for (int i = 0; i < 32; i++) {
+	  for (int i = 0; i < 31; i++) {
 		  if (morseSOS[i] == 1) {
 			  LL_GPIO_SetOutputPin(LD2_GPIO_Port, LD2_Pin);
 		  } else {
