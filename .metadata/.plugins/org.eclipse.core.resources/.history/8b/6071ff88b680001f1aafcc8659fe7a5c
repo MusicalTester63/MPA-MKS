@@ -20,8 +20,6 @@
 #include "main.h"
 volatile uint32_t Tick;
 #define LED_TIME_BLINK 600
-#define LED_TIME_SHORT 100
-#define LED_TIME_LONG  1000
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -64,28 +62,6 @@ void blink(void) {
     if (Tick > delay + LED_TIME_BLINK) {
         LL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
         delay = Tick;
-    }
-}
-
-void button(void) {
-    static uint32_t old_s2, old_s1;
-    uint32_t new_s2 = LL_GPIO_IsInputPinSet(S2_GPIO_Port, S2_Pin);
-    uint32_t new_s1 = LL_GPIO_IsInputPinSet(S1_GPIO_Port, S1_Pin);
-
-    if (old_s2 && !new_s2) {  // Falling edge on S2
-        off_time = Tick + LED_TIME_SHORT;  // LED2 ON for 100 ms
-        LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
-    }
-    if (old_s1 && !new_s1) {  // Falling edge on S1
-        off_time = Tick + LED_TIME_LONG;  // LED2 ON for 1s
-        LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
-    }
-    old_s2 = new_s2;
-    old_s1 = new_s1;
-
-    // Turn off LED2 when time expires
-    if (Tick > off_time) {
-        LL_GPIO_ResetOutputPin(LED2_GPIO_Port, LED2_Pin);
     }
 }
 

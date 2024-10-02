@@ -342,3 +342,17 @@ Finished building: default.size.stdout
  
 Finished building: CV02.list
  
+14:03:57 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CV02.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV02\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV02.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CV02.elf
+ 
+arm-none-eabi-size  CV02.elf 
+arm-none-eabi-objdump -h -S CV02.elf  > "CV02.list"
+   text	   data	    bss	    dec	    hex	filename
+   5584	      4	   1572	   7160	   1bf8	CV02.elf
+Finished building: default.size.stdout
+ 
+Finished building: CV02.list
+ 

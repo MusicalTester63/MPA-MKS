@@ -20,8 +20,6 @@
 #include "main.h"
 volatile uint32_t Tick;
 #define LED_TIME_BLINK 600
-#define LED_TIME_SHORT 100
-#define LED_TIME_LONG  1000
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -73,11 +71,11 @@ void button(void) {
     uint32_t new_s1 = LL_GPIO_IsInputPinSet(S1_GPIO_Port, S1_Pin);
 
     if (old_s2 && !new_s2) {  // Falling edge on S2
-        off_time = Tick + LED_TIME_SHORT;  // LED2 ON for 100 ms
+        off_time = Tick + 100;  // LED2 ON for 100 ms
         LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
     }
     if (old_s1 && !new_s1) {  // Falling edge on S1
-        off_time = Tick + LED_TIME_LONG;  // LED2 ON for 1s
+        off_time = Tick + 1000;  // LED2 ON for 1s
         LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
     }
     old_s2 = new_s2;
@@ -88,6 +86,7 @@ void button(void) {
         LL_GPIO_ResetOutputPin(LED2_GPIO_Port, LED2_Pin);
     }
 }
+
 
 /* USER CODE END 0 */
 
