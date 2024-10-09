@@ -90,31 +90,35 @@ void button(void) {
     }
 }
 
-static uint16_t debounce1 = 0xFFFF;
-static uint16_t debounce2 = 0xFFFF;
+static uint16_t debounce = 0xFFFF;
 
 void button_advanced(void) {
-    static uint32_t off_time = 0;
-    debounce1 = (debounce1 << 1) | LL_GPIO_IsInputPinSet(S2_GPIO_Port, S2_Pin);
-    debounce2 = (debounce2 << 1) | LL_GPIO_IsInputPinSet(S1_GPIO_Port, S1_Pin);
 
-    if (debounce1 == 0x7FFF) {
-        LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
-        off_time = Tick + 100;
-    }
+	 // Check for the state of S2 and S1 buttons
+		static uint32_t old_s2, old_s1;
+	    static uint32_t off_time = 0;
+	    uint32_t new_s2 = LL_GPIO_IsInputPinSet(S2_GPIO_Port, S2_Pin); // Read current state of S2
+	    uint32_t new_s1 = LL_GPIO_IsInputPinSet(S1_GPIO_Port, S1_Pin); // Read current state of S1
 
-    if (debounce2 == 0x7FFF) {
-            LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
-            off_time = Tick + 1000;
-        }
+	    // Check if the debounce variable matches the value for button S1 (0x8000)
+	    if ((debounce & 0x8000) == 0x8000) {
+	        // LED2 on for S1 pressed
+	        LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
+	        // Set a timeout for how long the LED should stay on (e.g., 1000 ms)
+	        off_time = Tick + 1000; // 1 second
+	    } else if ((debounce & 0x7FFF) == 0x7FFF) {
+	        // LED2 on for S2 pressed
+	        LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
+	        // Set a timeout for how long the LED should stay on (e.g., 100 ms)
+	        off_time = Tick + 100; // 100 ms
+	    }
 
-    // Turn off LED2 when time expires
-    if (Tick > off_time) {
-        LL_GPIO_ResetOutputPin(LED2_GPIO_Port, LED2_Pin);
-    }
+	    // Check if it's time to turn off LED2
+	    if (Tick > off_time) {
+	        LL_GPIO_ResetOutputPin(LED2_GPIO_Port, LED2_Pin); // Turn off LED2
+	    }
+
 }
-
-
 
 
 
@@ -169,7 +173,7 @@ int main(void)
 
 	if(Tick > last_button_tick + BUTTON_PERIOD){
 		last_button_tick = Tick;
-		button_advanced();
+		button();
 	}
 
 

@@ -20,9 +20,8 @@
 #include "main.h"
 volatile uint32_t Tick;
 #define LED_TIME_BLINK 600
-#define LED_TIME_SHORT 300
+#define LED_TIME_SHORT 100
 #define LED_TIME_LONG  1000
-#define BUTTON_PERIOD 40
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -70,56 +69,26 @@ void blink(void) {
 
 void button(void) {
     static uint32_t old_s2, old_s1;
-    static uint32_t off_time = 0;
+    static uint32_t off_time = 0;  // Declare off_time
     uint32_t new_s2 = LL_GPIO_IsInputPinSet(S2_GPIO_Port, S2_Pin);
     uint32_t new_s1 = LL_GPIO_IsInputPinSet(S1_GPIO_Port, S1_Pin);
 
-    if (old_s2 && !new_s2) {
-        off_time = Tick + LED_TIME_SHORT;
+    if (old_s2 && !new_s2) {  // Falling edge on S2
+        off_time = Tick + LED_TIME_SHORT;  // LED2 ON for 100 ms
         LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
     }
-    if (old_s1 && !new_s1) {
-        off_time = Tick + LED_TIME_LONG;
+    if (old_s1 && !new_s1) {  // Falling edge on S1
+        off_time = Tick + LED_TIME_LONG;  // LED2 ON for 1s
         LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
     }
     old_s2 = new_s2;
     old_s1 = new_s1;
-
-    if (Tick > off_time) {
-        LL_GPIO_ResetOutputPin(LED2_GPIO_Port, LED2_Pin);
-    }
-}
-
-static uint16_t debounce1 = 0xFFFF;
-static uint16_t debounce2 = 0xFFFF;
-
-void button_advanced(void) {
-    static uint32_t off_time = 0;
-    debounce1 = (debounce1 << 1) | LL_GPIO_IsInputPinSet(S2_GPIO_Port, S2_Pin);
-    debounce2 = (debounce2 << 1) | LL_GPIO_IsInputPinSet(S1_GPIO_Port, S1_Pin);
-
-    if (debounce1 == 0x7FFF) {
-        LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
-        off_time = Tick + 100;
-    }
-
-    if (debounce2 == 0x7FFF) {
-            LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
-            off_time = Tick + 1000;
-        }
 
     // Turn off LED2 when time expires
     if (Tick > off_time) {
         LL_GPIO_ResetOutputPin(LED2_GPIO_Port, LED2_Pin);
     }
 }
-
-
-
-
-
-
-
 
 /* USER CODE END 0 */
 
@@ -164,15 +133,7 @@ int main(void)
   {
 
 	blink();
-
-	static uint32_t last_button_tick;
-
-	if(Tick > last_button_tick + BUTTON_PERIOD){
-		last_button_tick = Tick;
-		button_advanced();
-	}
-
-
+	button();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

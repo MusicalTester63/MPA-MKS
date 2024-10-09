@@ -356,3 +356,333 @@ Finished building: default.size.stdout
  
 Finished building: CV02.list
  
+14:14:12 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'button':
+../Core/Src/main.c:76:9: error: 'off_time' undeclared (first use in this function)
+   76 |         off_time = Tick + LED_TIME_SHORT;  // LED2 ON for 100 ms
+      |         ^~~~~~~~
+../Core/Src/main.c:76:9: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:31: Core/Src/main.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+14:15:12 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CV02.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV02\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV02.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CV02.elf
+ 
+arm-none-eabi-size  CV02.elf 
+arm-none-eabi-objdump -h -S CV02.elf  > "CV02.list"
+   text	   data	    bss	    dec	    hex	filename
+   5584	      4	   1572	   7160	   1bf8	CV02.elf
+Finished building: default.size.stdout
+ 
+Finished building: CV02.list
+ 
+14:17:01 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CV02.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV02\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV02.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CV02.elf
+ 
+arm-none-eabi-size  CV02.elf 
+arm-none-eabi-objdump -h -S CV02.elf  > "CV02.list"
+   text	   data	    bss	    dec	    hex	filename
+   5824	      4	   1588	   7416	   1cf8	CV02.elf
+Finished building: default.size.stdout
+ 
+Finished building: CV02.list
+ 
+14:19:39 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CV02.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV02\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV02.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CV02.elf
+ 
+arm-none-eabi-size  CV02.elf 
+arm-none-eabi-objdump -h -S CV02.elf  > "CV02.list"
+   text	   data	    bss	    dec	    hex	filename
+   5768	      8	   1576	   7352	   1cb8	CV02.elf
+Finished building: default.size.stdout
+ 
+Finished building: CV02.list
+ 
+14:21:47 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CV02.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV02\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV02.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CV02.elf
+ 
+arm-none-eabi-size  CV02.elf 
+arm-none-eabi-objdump -h -S CV02.elf  > "CV02.list"
+   text	   data	    bss	    dec	    hex	filename
+   5768	      8	   1576	   7352	   1cb8	CV02.elf
+Finished building: default.size.stdout
+ 
+Finished building: CV02.list
+ 
+14:23:55 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CV02.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV02\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV02.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CV02.elf
+ 
+arm-none-eabi-size  CV02.elf 
+arm-none-eabi-objdump -h -S CV02.elf  > "CV02.list"
+   text	   data	    bss	    dec	    hex	filename
+   5768	      8	   1576	   7352	   1cb8	CV02.elf
+Finished building: default.size.stdout
+ 
+Finished building: CV02.list
+ 
+14:27:01 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f0xx_it.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f0xx_it.d" -MT"Core/Src/stm32f0xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f0xx_it.o"
+arm-none-eabi-gcc -o "CV02.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV02\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV02.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CV02.elf
+ 
+arm-none-eabi-size  CV02.elf 
+arm-none-eabi-objdump -h -S CV02.elf  > "CV02.list"
+   text	   data	    bss	    dec	    hex	filename
+   5760	      4	   1588	   7352	   1cb8	CV02.elf
+Finished building: default.size.stdout
+ 
+Finished building: CV02.list
+ 
+14:27:49 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CV02.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV02\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV02.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CV02.elf
+ 
+arm-none-eabi-size  CV02.elf 
+arm-none-eabi-objdump -h -S CV02.elf  > "CV02.list"
+   text	   data	    bss	    dec	    hex	filename
+   5704	      8	   1576	   7288	   1c78	CV02.elf
+Finished building: default.size.stdout
+ 
+Finished building: CV02.list
+ 
+14:30:23 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:158:16: error: unknown type name 'unit_32'
+  158 |         static unit_32 last_button_tick;
+      |                ^~~~~~~
+../Core/Src/main.c:160:38: error: 'BUTTON_PERIOD' undeclared (first use in this function)
+  160 |         if(Tick > last_button_tick + BUTTON_PERIOD){
+      |                                      ^~~~~~~~~~~~~
+../Core/Src/main.c:160:38: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:31: Core/Src/main.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+14:31:14 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CV02.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV02\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV02.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CV02.elf
+ 
+arm-none-eabi-size  CV02.elf 
+arm-none-eabi-objdump -h -S CV02.elf  > "CV02.list"
+   text	   data	    bss	    dec	    hex	filename
+   5792	      4	   1588	   7384	   1cd8	CV02.elf
+Finished building: default.size.stdout
+ 
+Finished building: CV02.list
+ 
+14:32:00 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CV02.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV02\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV02.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CV02.elf
+ 
+arm-none-eabi-size  CV02.elf 
+arm-none-eabi-objdump -h -S CV02.elf  > "CV02.list"
+   text	   data	    bss	    dec	    hex	filename
+   5736	      8	   1584	   7328	   1ca0	CV02.elf
+Finished building: default.size.stdout
+ 
+Finished building: CV02.list
+ 
+14:37:24 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'button_advanced':
+../Core/Src/main.c:99:29: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'time'
+   99 |         static uint32_t old time;
+      |                             ^~~~
+../Core/Src/main.c:99:29: error: 'time' undeclared (first use in this function)
+../Core/Src/main.c:21:1: note: 'time' is defined in header '<time.h>'; did you forget to '#include <time.h>'?
+   20 | #include "main.h"
+  +++ |+#include <time.h>
+   21 | volatile uint32_t Tick;
+../Core/Src/main.c:99:29: note: each undeclared identifier is reported only once for each function it appears in
+   99 |         static uint32_t old time;
+      |                             ^~~~
+../Core/Src/main.c:101:19: error: 'old_time' undeclared (first use in this function)
+  101 |         if(Tick > old_time + 4){
+      |                   ^~~~~~~~
+../Core/Src/main.c:97:25: warning: unused variable 'debounce' [-Wunused-variable]
+   97 |         static uint16_t debounce = 0xFFFF;
+      |                         ^~~~~~~~
+make: *** [Core/Src/subdir.mk:31: Core/Src/main.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+14:37:36 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'button_advanced':
+../Core/Src/main.c:99:29: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'time'
+   99 |         static uint32_t old time;
+      |                             ^~~~
+../Core/Src/main.c:99:29: error: 'time' undeclared (first use in this function)
+../Core/Src/main.c:21:1: note: 'time' is defined in header '<time.h>'; did you forget to '#include <time.h>'?
+   20 | #include "main.h"
+  +++ |+#include <time.h>
+   21 | volatile uint32_t Tick;
+../Core/Src/main.c:99:29: note: each undeclared identifier is reported only once for each function it appears in
+   99 |         static uint32_t old time;
+      |                             ^~~~
+../Core/Src/main.c:97:25: warning: unused variable 'debounce' [-Wunused-variable]
+   97 |         static uint16_t debounce = 0xFFFF;
+      |                         ^~~~~~~~
+make: *** [Core/Src/subdir.mk:31: Core/Src/main.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+14:37:52 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CV02.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV02\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV02.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CV02.elf
+ 
+arm-none-eabi-size  CV02.elf 
+arm-none-eabi-objdump -h -S CV02.elf  > "CV02.list"
+   text	   data	    bss	    dec	    hex	filename
+   5792	      4	   1588	   7384	   1cd8	CV02.elf
+Finished building: default.size.stdout
+ 
+Finished building: CV02.list
+ 
+14:44:23 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'button_advanced':
+../Core/Src/main.c:106:17: error: 'off_time' undeclared (first use in this function)
+  106 |                 off_time = Tick + 1000; // 1 second
+      |                 ^~~~~~~~
+../Core/Src/main.c:106:17: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:99:22: warning: unused variable 'new_s1' [-Wunused-variable]
+   99 |             uint32_t new_s1 = LL_GPIO_IsInputPinSet(S1_GPIO_Port, S1_Pin); // Read current state of S1
+      |                      ^~~~~~
+../Core/Src/main.c:98:22: warning: unused variable 'new_s2' [-Wunused-variable]
+   98 |             uint32_t new_s2 = LL_GPIO_IsInputPinSet(S2_GPIO_Port, S2_Pin); // Read current state of S2
+      |                      ^~~~~~
+make: *** [Core/Src/subdir.mk:31: Core/Src/main.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+14:44:48 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'button_advanced':
+../Core/Src/main.c:101:22: warning: unused variable 'new_s1' [-Wunused-variable]
+  101 |             uint32_t new_s1 = LL_GPIO_IsInputPinSet(S1_GPIO_Port, S1_Pin); // Read current state of S1
+      |                      ^~~~~~
+../Core/Src/main.c:100:22: warning: unused variable 'new_s2' [-Wunused-variable]
+  100 |             uint32_t new_s2 = LL_GPIO_IsInputPinSet(S2_GPIO_Port, S2_Pin); // Read current state of S2
+      |                      ^~~~~~
+../Core/Src/main.c:98:41: warning: unused variable 'old_s1' [-Wunused-variable]
+   98 |                 static uint32_t old_s2, old_s1;
+      |                                         ^~~~~~
+../Core/Src/main.c:98:33: warning: unused variable 'old_s2' [-Wunused-variable]
+   98 |                 static uint32_t old_s2, old_s1;
+      |                                 ^~~~~~
+arm-none-eabi-gcc -o "CV02.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV02\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV02.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CV02.elf
+ 
+arm-none-eabi-size  CV02.elf 
+arm-none-eabi-objdump -h -S CV02.elf  > "CV02.list"
+   text	   data	    bss	    dec	    hex	filename
+   5792	      4	   1588	   7384	   1cd8	CV02.elf
+Finished building: default.size.stdout
+ 
+Finished building: CV02.list
+ 
+14:46:09 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'button_advanced':
+../Core/Src/main.c:101:22: warning: unused variable 'new_s1' [-Wunused-variable]
+  101 |             uint32_t new_s1 = LL_GPIO_IsInputPinSet(S1_GPIO_Port, S1_Pin); // Read current state of S1
+      |                      ^~~~~~
+../Core/Src/main.c:100:22: warning: unused variable 'new_s2' [-Wunused-variable]
+  100 |             uint32_t new_s2 = LL_GPIO_IsInputPinSet(S2_GPIO_Port, S2_Pin); // Read current state of S2
+      |                      ^~~~~~
+../Core/Src/main.c:98:41: warning: unused variable 'old_s1' [-Wunused-variable]
+   98 |                 static uint32_t old_s2, old_s1;
+      |                                         ^~~~~~
+../Core/Src/main.c:98:33: warning: unused variable 'old_s2' [-Wunused-variable]
+   98 |                 static uint32_t old_s2, old_s1;
+      |                                 ^~~~~~
+arm-none-eabi-gcc -o "CV02.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV02\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV02.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CV02.elf
+ 
+arm-none-eabi-size  CV02.elf 
+arm-none-eabi-objdump -h -S CV02.elf  > "CV02.list"
+   text	   data	    bss	    dec	    hex	filename
+   5776	      8	   1584	   7368	   1cc8	CV02.elf
+Finished building: default.size.stdout
+ 
+Finished building: CV02.list
+ 
+14:46:52 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CV02.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV02\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV02.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CV02.elf
+ 
+arm-none-eabi-size  CV02.elf 
+arm-none-eabi-objdump -h -S CV02.elf  > "CV02.list"
+   text	   data	    bss	    dec	    hex	filename
+   5704	      8	   1584	   7296	   1c80	CV02.elf
+Finished building: default.size.stdout
+ 
+Finished building: CV02.list
+ 
+14:52:39 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'button_advanced':
+../Core/Src/main.c:98:18: error: 'debounce' undeclared (first use in this function); did you mean 'debounce2'?
+   98 |     debounce1 = (debounce << 1) | LL_GPIO_IsInputPinSet(S2_GPIO_Port, S2_Pin);
+      |                  ^~~~~~~~
+      |                  debounce2
+../Core/Src/main.c:98:18: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:31: Core/Src/main.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+14:52:50 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CV02.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV02\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV02.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CV02.elf
+ 
+arm-none-eabi-size  CV02.elf 
+arm-none-eabi-objdump -h -S CV02.elf  > "CV02.list"
+   text	   data	    bss	    dec	    hex	filename
+   5792	      4	   1588	   7384	   1cd8	CV02.elf
+Finished building: default.size.stdout
+ 
+Finished building: CV02.list
+ 
+14:56:14 **** Incremental Build of configuration Debug for project CV02 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32F030x8 -DUSE_FULL_LL_DRIVER -DHSE_VALUE=8000000 -DHSE_STARTUP_TIMEOUT=100 -DLSE_STARTUP_TIMEOUT=5000 -DLSE_VALUE=32768 -DHSI_VALUE=8000000 -DLSI_VALUE=40000 -DVDD_VALUE=3300 -DPREFETCH_ENABLE=1 -DINSTRUCTION_CACHE_ENABLE=0 -DDATA_CACHE_ENABLE=0 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CV02.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV02\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV02.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CV02.elf
+ 
+arm-none-eabi-size  CV02.elf 
+arm-none-eabi-objdump -h -S CV02.elf  > "CV02.list"
+   text	   data	    bss	    dec	    hex	filename
+   5804	      8	   1584	   7396	   1ce4	CV02.elf
+Finished building: default.size.stdout
+ 
+Finished building: CV02.list
+ 

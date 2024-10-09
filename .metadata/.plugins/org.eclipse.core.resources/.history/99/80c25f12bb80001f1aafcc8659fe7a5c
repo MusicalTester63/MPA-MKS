@@ -90,31 +90,22 @@ void button(void) {
     }
 }
 
-static uint16_t debounce1 = 0xFFFF;
-static uint16_t debounce2 = 0xFFFF;
+static uint16_t debounce = 0xFFFF;
 
 void button_advanced(void) {
-    static uint32_t off_time = 0;
-    debounce1 = (debounce1 << 1) | LL_GPIO_IsInputPinSet(S2_GPIO_Port, S2_Pin);
-    debounce2 = (debounce2 << 1) | LL_GPIO_IsInputPinSet(S1_GPIO_Port, S1_Pin);
+    static uint32_t off_time = 0;  // Declare off_time
+    debounce = (debounce << 1) | LL_GPIO_IsInputPinSet(S1_GPIO_Port, S1_Pin);
 
-    if (debounce1 == 0x7FFF) {
+    if (debounce == 0x7FFF) {
         LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
-        off_time = Tick + 100;
+        off_time = Tick + LED_TIME_LONG;
     }
-
-    if (debounce2 == 0x7FFF) {
-            LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
-            off_time = Tick + 1000;
-        }
 
     // Turn off LED2 when time expires
     if (Tick > off_time) {
         LL_GPIO_ResetOutputPin(LED2_GPIO_Port, LED2_Pin);
     }
 }
-
-
 
 
 
