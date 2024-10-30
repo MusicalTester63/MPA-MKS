@@ -1,76 +1,49 @@
-13:43:22 **** Incremental Build of configuration Debug for project CV06 ****
+14:30:06 **** Incremental Build of configuration Debug for project CV06 ****
 make -j4 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc "../Core/Src/sct.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sct.d" -MT"Core/Src/sct.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sct.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:122:27: warning: variable 'delay' set but not used [-Wunused-but-set-variable]
+  122 |           static uint32_t delay;
+      |                           ^~~~~
 arm-none-eabi-gcc -o "CV06.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV06\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV06.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: CV06.elf
  
 arm-none-eabi-size  CV06.elf 
 arm-none-eabi-objdump -h -S CV06.elf  > "CV06.list"
    text	   data	    bss	    dec	    hex	filename
-   9616	     12	   1708	  11336	   2c48	CV06.elf
+  14124	     12	   1788	  15924	   3e34	CV06.elf
 Finished building: default.size.stdout
  
 Finished building: CV06.list
  
-13:43:26 **** Incremental Build of configuration Debug for project CV06 ****
+14:30:16 **** Incremental Build of configuration Debug for project CV06 ****
 make -j4 all 
 arm-none-eabi-size  CV06.elf 
    text	   data	    bss	    dec	    hex	filename
-   9616	     12	   1708	  11336	   2c48	CV06.elf
+  14124	     12	   1788	  15924	   3e34	CV06.elf
 Finished building: default.size.stdout
  
-13:43:56 **** Incremental Build of configuration Debug for project CV06 ****
+14:33:42 **** Incremental Build of configuration Debug for project CV06 ****
 make -j4 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "CV06.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV06\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV06.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CV06.elf
- 
-arm-none-eabi-size  CV06.elf 
-arm-none-eabi-objdump -h -S CV06.elf  > "CV06.list"
-   text	   data	    bss	    dec	    hex	filename
-   9616	     12	   1708	  11336	   2c48	CV06.elf
-Finished building: default.size.stdout
- 
-Finished building: CV06.list
- 
-13:47:29 **** Incremental Build of configuration Debug for project CV06 ****
-make -j4 all 
-arm-none-eabi-gcc "../Core/Src/sct.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sct.d" -MT"Core/Src/sct.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sct.o"
-arm-none-eabi-gcc -o "CV06.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV06\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV06.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CV06.elf
- 
-arm-none-eabi-size  CV06.elf 
-arm-none-eabi-objdump -h -S CV06.elf  > "CV06.list"
-   text	   data	    bss	    dec	    hex	filename
-   9616	     12	   1708	  11336	   2c48	CV06.elf
-Finished building: default.size.stdout
- 
-Finished building: CV06.list
- 
-13:48:17 **** Incremental Build of configuration Debug for project CV06 ****
-make -j4 all 
-arm-none-eabi-gcc "../Core/Src/sct.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sct.d" -MT"Core/Src/sct.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sct.o"
-../Core/Src/sct.c:31:6: error: conflicting types for 'sct_value'; have 'void(uint16_t,  uint8_t)' {aka 'void(short unsigned int,  unsigned char)'}
-   31 | void sct_value(uint16_t value, uint8_t led){
-      |      ^~~~~~~~~
-In file included from ../Core/Src/sct.c:9:
-../Core/Inc/sct.h:15:6: note: previous declaration of 'sct_value' with type 'void(uint16_t,  uint8_t,  uint8_t)' {aka 'void(short unsigned int,  unsigned char,  unsigned char)'}
-   15 | void sct_value(uint16_t value, uint8_t led, uint8_t decimal_pos);
-      |      ^~~~~~~~~
-make: *** [Core/Src/subdir.mk:40: Core/Src/sct.o] Error 1
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:147:47: error: 'HAL_DELAY' undeclared (first use in this function); did you mean 'HAL_Delay'?
+  147 |                   if (HAL_GetTick() > delay + HAL_DELAY) {
+      |                                               ^~~~~~~~~
+      |                                               HAL_Delay
+../Core/Src/main.c:147:47: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
 "make -j4 all" terminated with exit code 2. Build might be incomplete.
-13:48:36 **** Incremental Build of configuration Debug for project CV06 ****
+14:34:01 **** Incremental Build of configuration Debug for project CV06 ****
 make -j4 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc "../Core/Src/sct.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sct.d" -MT"Core/Src/sct.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sct.o"
 arm-none-eabi-gcc -o "CV06.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Temp\230253\MPA-MKS\CV06\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV06.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: CV06.elf
  
 arm-none-eabi-size  CV06.elf 
 arm-none-eabi-objdump -h -S CV06.elf  > "CV06.list"
    text	   data	    bss	    dec	    hex	filename
-   9552	     12	   1708	  11272	   2c08	CV06.elf
+  14088	     12	   1788	  15888	   3e10	CV06.elf
 Finished building: default.size.stdout
  
 Finished building: CV06.list

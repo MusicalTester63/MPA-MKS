@@ -88,10 +88,15 @@ void sct_value(uint16_t value, uint8_t led){
 
 	};
 
-	reg |= reg_values[0][value / 100 % 10];
-	reg |= reg_values[1][value / 10 % 10];
-	reg |= reg_values[2][value / 1 % 10];
-	reg |= reg_values[3][led];
+	// Set the display values
+	    reg |= reg_values[0][value / 100 % 10];  // Hundreds place (DIS1)
+	    reg |= reg_values[1][value / 10 % 10];   // Tens place (DIS2)
+	    reg |= reg_values[2][value % 10];        // Units place (DIS3)
+	    reg |= reg_values[3][led];               // LED config
 
-	sct_led(reg);
+	    // Add the decimal point to DIS2 by setting bit 11
+	    reg |= (1 << 11);
+
+	    sct_led(reg);
+
 }
