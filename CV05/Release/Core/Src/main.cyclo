@@ -1,0 +1,5 @@
+../Core/Src/main.c:71:5:_write	1
+../Core/Src/main.c:77:6:uart_process_command	17
+../Core/Src/main.c:233:6:SystemClock_Config	4
+../Core/Src/main.c:178:5:main	13
+../Core/Src/main.c:428:6:Error_Handler	1
