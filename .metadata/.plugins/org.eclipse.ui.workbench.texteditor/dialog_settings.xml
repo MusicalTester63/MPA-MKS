@@ -6,8 +6,12 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="USER CODE BEGIN 2"/>
+		<item key="selection" value="Delay"/>
 		<list key="findhistory">
+			<item value="delay"/>
+			<item value="BEGIN 4"/>
+			<item value="platform_write"/>
+			<item value="xVisual"/>
 			<item value="USER CODE BEGIN 2"/>
 			<item value="USER CODE BEGIN"/>
 			<item value="User"/>
