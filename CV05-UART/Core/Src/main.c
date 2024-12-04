@@ -223,48 +223,6 @@ int main(void) {
 	while (1) {
 		/* USER CODE END WHILE */
 
-		uart_byte_available('L');
-		uart_byte_available('E');
-		uart_byte_available('D');
-		uart_byte_available('1');
-		uart_byte_available(' ');
-		uart_byte_available('O');
-		uart_byte_available('N');
-		uart_byte_available('\n');  // End of command
-
-		uart_byte_available('L');
-		uart_byte_available('E');
-		uart_byte_available('D');
-		uart_byte_available('2');
-		uart_byte_available(' ');
-		uart_byte_available('O');
-		uart_byte_available('F');
-		uart_byte_available('F');
-		uart_byte_available('\n');  // End of command
-
-		HAL_Delay(1000);
-
-		uart_byte_available('L');
-		uart_byte_available('E');
-		uart_byte_available('D');
-		uart_byte_available('1');
-		uart_byte_available(' ');
-		uart_byte_available('O');
-		uart_byte_available('F');
-		uart_byte_available('F');
-		uart_byte_available('\n');  // End of command
-
-		uart_byte_available('L');
-		uart_byte_available('E');
-		uart_byte_available('D');
-		uart_byte_available('2');
-		uart_byte_available(' ');
-		uart_byte_available('O');
-		uart_byte_available('N');
-		uart_byte_available('\n');  // End of command
-
-		HAL_Delay(1000);
-
 		/* USER CODE BEGIN 3 */
 		while (uart_rx_read_ptr != uart_rx_write_ptr) {
 			uint8_t data = uart_rx_buf[uart_rx_read_ptr];
