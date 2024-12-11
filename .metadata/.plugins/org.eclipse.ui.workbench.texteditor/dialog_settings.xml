@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="Delay"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="RX_BUFFER_LEN 64"/>
 			<item value="delay"/>
 			<item value="BEGIN 4"/>
 			<item value="platform_write"/>
