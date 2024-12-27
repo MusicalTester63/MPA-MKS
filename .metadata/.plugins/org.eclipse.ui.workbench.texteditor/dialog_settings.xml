@@ -6,8 +6,13 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="HAL_GetTick()"/>
 		<list key="findhistory">
+			<item value="HAL_GetTick()"/>
+			<item value="raw_pot"/>
+			<item value="static"/>
+			<item value="USBD_HID_GetPollingInterval"/>
+			<item value="step"/>
 			<item value="RX_BUFFER_LEN 64"/>
 			<item value="delay"/>
 			<item value="BEGIN 4"/>
@@ -18,6 +23,7 @@
 			<item value="User"/>
 		</list>
 		<list key="replacehistory">
+			<item value="mo"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

@@ -1,161 +1,89 @@
-10:28:04 **** Incremental Build of configuration Debug for project MKS12 ****
+20:13:09 **** Incremental Build of configuration Debug for project MKS4 ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "MKS12.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\david.hamran\Documents\github\MPA-MKS\MKS12\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MKS12.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: MKS12.elf
+arm-none-eabi-gcc "../Core/Src/sct.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sct.d" -MT"Core/Src/sct.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sct.o"
+arm-none-eabi-gcc -o "MKS4.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\david.hamran\Documents\github\MPA-MKS\MKS4\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MKS4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MKS4.elf
  
-arm-none-eabi-size  MKS12.elf 
-arm-none-eabi-objdump -h -S MKS12.elf  > "MKS12.list"
+arm-none-eabi-size  MKS4.elf 
+arm-none-eabi-objdump -h -S MKS4.elf  > "MKS4.list"
    text	   data	    bss	    dec	    hex	filename
-  34952	    284	   4164	  39400	   99e8	MKS12.elf
+  11092	     16	   1792	  12900	   3264	MKS4.elf
 Finished building: default.size.stdout
  
-Finished building: MKS12.list
+Finished building: MKS4.list
  
-10:28:19 **** Incremental Build of configuration Debug for project MKS12 ****
+20:13:16 **** Incremental Build of configuration Debug for project MKS4 ****
 make -j8 all 
-arm-none-eabi-size  MKS12.elf 
+arm-none-eabi-size  MKS4.elf 
    text	   data	    bss	    dec	    hex	filename
-  34952	    284	   4164	  39400	   99e8	MKS12.elf
+  11092	     16	   1792	  12900	   3264	MKS4.elf
 Finished building: default.size.stdout
  
-10:29:15 **** Incremental Build of configuration Debug for project CV09-HID-MOUSE ****
+20:13:48 **** Incremental Build of configuration Debug for project MKS4 ****
 make -j8 all 
-arm-none-eabi-size  CV09-HID-MOUSE.elf 
+arm-none-eabi-gcc "../Core/Src/sct.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sct.d" -MT"Core/Src/sct.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sct.o"
+arm-none-eabi-gcc -o "MKS4.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\david.hamran\Documents\github\MPA-MKS\MKS4\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MKS4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MKS4.elf
+ 
+arm-none-eabi-size  MKS4.elf 
+arm-none-eabi-objdump -h -S MKS4.elf  > "MKS4.list"
    text	   data	    bss	    dec	    hex	filename
-  34884	    284	   4164	  39332	   99a4	CV09-HID-MOUSE.elf
+  11092	     16	   1792	  12900	   3264	MKS4.elf
 Finished building: default.size.stdout
  
-10:34:52 **** Incremental Build of configuration Debug for project CV09-HID-MOUSE ****
+Finished building: MKS4.list
+ 
+20:15:08 **** Incremental Build of configuration Debug for project MKS4 ****
 make -j8 all 
-arm-none-eabi-size  CV09-HID-MOUSE.elf 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/sct.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sct.d" -MT"Core/Src/sct.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sct.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:136:18: warning: unused variable 'last_update_control' [-Wunused-variable]
+  136 |         uint32_t last_update_control = 0;
+      |                  ^~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "MKS4.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\david.hamran\Documents\github\MPA-MKS\MKS4\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MKS4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MKS4.elf
+ 
+arm-none-eabi-size  MKS4.elf 
+arm-none-eabi-objdump -h -S MKS4.elf  > "MKS4.list"
    text	   data	    bss	    dec	    hex	filename
-  34884	    284	   4164	  39332	   99a4	CV09-HID-MOUSE.elf
+  10992	     12	   1788	  12792	   31f8	MKS4.elf
 Finished building: default.size.stdout
  
-10:43:37 **** Incremental Build of configuration Debug for project CV09-HID-MOUSE ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "CV09-HID-MOUSE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\david.hamran\Documents\github\MPA-MKS\CV09-HID-MOUSE\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV09-HID-MOUSE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CV09-HID-MOUSE.elf
+Finished building: MKS4.list
  
-arm-none-eabi-size  CV09-HID-MOUSE.elf 
-arm-none-eabi-objdump -h -S CV09-HID-MOUSE.elf  > "CV09-HID-MOUSE.list"
+21:12:06 **** Incremental Build of configuration Debug for project MKS4 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "MKS4.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\david.hamran\Documents\github\MPA-MKS\MKS4\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MKS4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MKS4.elf
+ 
+arm-none-eabi-size  MKS4.elf 
+arm-none-eabi-objdump -h -S MKS4.elf  > "MKS4.list"
    text	   data	    bss	    dec	    hex	filename
-  34884	    284	   4164	  39332	   99a4	CV09-HID-MOUSE.elf
+  10988	     12	   1788	  12788	   31f4	MKS4.elf
 Finished building: default.size.stdout
  
-Finished building: CV09-HID-MOUSE.list
+Finished building: MKS4.list
  
-10:45:02 **** Incremental Build of configuration Debug for project CV09-HID-MOUSE ****
+21:14:23 **** Incremental Build of configuration Debug for project MKS4 ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "CV09-HID-MOUSE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\david.hamran\Documents\github\MPA-MKS\CV09-HID-MOUSE\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV09-HID-MOUSE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CV09-HID-MOUSE.elf
- 
-arm-none-eabi-size  CV09-HID-MOUSE.elf 
-arm-none-eabi-objdump -h -S CV09-HID-MOUSE.elf  > "CV09-HID-MOUSE.list"
+arm-none-eabi-size  MKS4.elf 
    text	   data	    bss	    dec	    hex	filename
-  34884	    284	   4164	  39332	   99a4	CV09-HID-MOUSE.elf
+  10988	     12	   1788	  12788	   31f4	MKS4.elf
 Finished building: default.size.stdout
  
-Finished building: CV09-HID-MOUSE.list
- 
-10:46:59 **** Incremental Build of configuration Debug for project CV09-HID-MOUSE ****
+21:14:57 **** Incremental Build of configuration Debug for project MKS4 ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "CV09-HID-MOUSE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\david.hamran\Documents\github\MPA-MKS\CV09-HID-MOUSE\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV09-HID-MOUSE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CV09-HID-MOUSE.elf
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "MKS4.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\david.hamran\Documents\github\MPA-MKS\MKS4\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MKS4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MKS4.elf
  
-arm-none-eabi-size  CV09-HID-MOUSE.elf 
-arm-none-eabi-objdump -h -S CV09-HID-MOUSE.elf  > "CV09-HID-MOUSE.list"
+arm-none-eabi-size  MKS4.elf 
+arm-none-eabi-objdump -h -S MKS4.elf  > "MKS4.list"
    text	   data	    bss	    dec	    hex	filename
-  34884	    284	   4164	  39332	   99a4	CV09-HID-MOUSE.elf
+  10984	     12	   1788	  12784	   31f0	MKS4.elf
 Finished building: default.size.stdout
  
-Finished building: CV09-HID-MOUSE.list
- 
-10:48:01 **** Incremental Build of configuration Debug for project CV09-HID-MOUSE ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "CV09-HID-MOUSE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\david.hamran\Documents\github\MPA-MKS\CV09-HID-MOUSE\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV09-HID-MOUSE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CV09-HID-MOUSE.elf
- 
-arm-none-eabi-size  CV09-HID-MOUSE.elf 
-arm-none-eabi-objdump -h -S CV09-HID-MOUSE.elf  > "CV09-HID-MOUSE.list"
-   text	   data	    bss	    dec	    hex	filename
-  34884	    284	   4164	  39332	   99a4	CV09-HID-MOUSE.elf
-Finished building: default.size.stdout
- 
-Finished building: CV09-HID-MOUSE.list
- 
-10:49:10 **** Incremental Build of configuration Debug for project CV09-HID-MOUSE ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "CV09-HID-MOUSE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\david.hamran\Documents\github\MPA-MKS\CV09-HID-MOUSE\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV09-HID-MOUSE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CV09-HID-MOUSE.elf
- 
-arm-none-eabi-size  CV09-HID-MOUSE.elf 
-arm-none-eabi-objdump -h -S CV09-HID-MOUSE.elf  > "CV09-HID-MOUSE.list"
-   text	   data	    bss	    dec	    hex	filename
-  34884	    284	   4164	  39332	   99a4	CV09-HID-MOUSE.elf
-Finished building: default.size.stdout
- 
-Finished building: CV09-HID-MOUSE.list
- 
-10:50:02 **** Incremental Build of configuration Debug for project CV09-HID-MOUSE ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "CV09-HID-MOUSE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\david.hamran\Documents\github\MPA-MKS\CV09-HID-MOUSE\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV09-HID-MOUSE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CV09-HID-MOUSE.elf
- 
-arm-none-eabi-size  CV09-HID-MOUSE.elf 
-arm-none-eabi-objdump -h -S CV09-HID-MOUSE.elf  > "CV09-HID-MOUSE.list"
-   text	   data	    bss	    dec	    hex	filename
-  34884	    284	   4164	  39332	   99a4	CV09-HID-MOUSE.elf
-Finished building: default.size.stdout
- 
-Finished building: CV09-HID-MOUSE.list
- 
-10:51:27 **** Incremental Build of configuration Debug for project CV09-HID-MOUSE ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "CV09-HID-MOUSE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\david.hamran\Documents\github\MPA-MKS\CV09-HID-MOUSE\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV09-HID-MOUSE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CV09-HID-MOUSE.elf
- 
-arm-none-eabi-size  CV09-HID-MOUSE.elf 
-arm-none-eabi-objdump -h -S CV09-HID-MOUSE.elf  > "CV09-HID-MOUSE.list"
-   text	   data	    bss	    dec	    hex	filename
-  34884	    284	   4164	  39332	   99a4	CV09-HID-MOUSE.elf
-Finished building: default.size.stdout
- 
-Finished building: CV09-HID-MOUSE.list
- 
-10:53:30 **** Incremental Build of configuration Debug for project CV09-HID-MOUSE ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "CV09-HID-MOUSE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\david.hamran\Documents\github\MPA-MKS\CV09-HID-MOUSE\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV09-HID-MOUSE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CV09-HID-MOUSE.elf
- 
-arm-none-eabi-size  CV09-HID-MOUSE.elf 
-arm-none-eabi-objdump -h -S CV09-HID-MOUSE.elf  > "CV09-HID-MOUSE.list"
-   text	   data	    bss	    dec	    hex	filename
-  34884	    284	   4164	  39332	   99a4	CV09-HID-MOUSE.elf
-Finished building: default.size.stdout
- 
-Finished building: CV09-HID-MOUSE.list
- 
-10:54:37 **** Incremental Build of configuration Debug for project CV09-HID-MOUSE ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "CV09-HID-MOUSE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\david.hamran\Documents\github\MPA-MKS\CV09-HID-MOUSE\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV09-HID-MOUSE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CV09-HID-MOUSE.elf
- 
-arm-none-eabi-size  CV09-HID-MOUSE.elf 
-arm-none-eabi-objdump -h -S CV09-HID-MOUSE.elf  > "CV09-HID-MOUSE.list"
-   text	   data	    bss	    dec	    hex	filename
-  34896	    284	   4164	  39344	   99b0	CV09-HID-MOUSE.elf
-Finished building: default.size.stdout
- 
-Finished building: CV09-HID-MOUSE.list
+Finished building: MKS4.list
  

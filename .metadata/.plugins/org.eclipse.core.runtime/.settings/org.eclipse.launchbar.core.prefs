@@ -1,7 +1,7 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:CV07-huuuuh Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:CV05-UART Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:MKS12 Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:CV09-HID-MOUSE Debug
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:CV05-UART Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:CV07-huuuuh Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:CV09-HID-MOUSE Debug
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:07-Accelerometer\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:07-Accelerometer\ Debug/activeLaunchTarget=null\:---
@@ -15,3 +15,4 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:CV07-huuuuh\ Debug/activeLaunch
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:CV07-huuuuh\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:CV08\ -MATRIX-KEYBOARD\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:CV09-HID-MOUSE\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:MKS4\ Debug/activeLaunchMode=run
