@@ -62,7 +62,7 @@ static void MX_USART2_UART_Init(void);
 uint8_t get_dot_position(uint32_t seconds) {
 	if (seconds < 10) {
 		return 1; // Bodka na prvom displeji
-	} else if (seconds < 60) {
+	} else if (seconds < 100) {
 		return 2; // Bodka na druhom displeji
 	} else {
 		return 3; // Bodka na treťom displeji
@@ -133,7 +133,7 @@ int main(void) {
 
 			} else if (state == running) {
 
-				for(uint8_t i=0; i < 4;i++){
+				for (uint8_t i = 0; i < 4; i++) {
 					sct_value(display_value, 0, 8);
 					HAL_Delay(100);
 					sct_value(display_value, 0, 0);
@@ -166,19 +166,20 @@ int main(void) {
 			// Pridanie bloku na výpočet hodnoty pre led_timer
 			led_timer = (total_centiseconds % 100) / 10; // Získa desiatky stotín
 
-			if (total_centiseconds < 1000) { // Menej ako 10 sekúnd
+			if (total_centiseconds < 6000) { // Menej ako 60 sekúnd
 				uint8_t seconds = total_centiseconds / 100;
 				uint8_t centiseconds = total_centiseconds % 100;
 				display_value = (seconds * 100) + centiseconds;
 
-			} else if (total_centiseconds < 10000) { // Menej ako 100 sekúnd
-				uint8_t tens_of_seconds = total_centiseconds / 100;
-				uint8_t tenths_of_second = (total_centiseconds % 100) / 10;
-				display_value = (tens_of_seconds * 10) + tenths_of_second;
+			} else if (total_centiseconds < 60000) { // Menej ako 600 sekúnd (10 minút)
+				uint8_t minutes = total_centiseconds / 6000;
+				uint8_t seconds = (total_centiseconds / 100) % 60;
+				display_value = (minutes * 100) + seconds;
 
-			} else { // 100 sekúnd alebo viac
-				uint16_t seconds = total_centiseconds / 100;
-				display_value = seconds;
+			} else { // 600 sekúnd alebo viac (10 minút a viac)
+				uint8_t minutes = total_centiseconds / 6000;
+				uint8_t seconds = (total_centiseconds / 100) % 60;
+				display_value = (minutes * 100) + seconds;
 			}
 
 			uint8_t dot_position = get_dot_position(total_centiseconds / 100); // Získať pozíciu bodky
