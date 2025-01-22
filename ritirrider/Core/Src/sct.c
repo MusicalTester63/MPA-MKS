@@ -87,7 +87,7 @@ void sct_led(uint32_t value) {
 
 // Function for converting value to 3 digit number
 void sct_value(uint16_t value, uint16_t led) {
-	uint32_t reg = 1;
+	uint32_t reg = 0;
 
 	// 8-segment display
 	reg |= reg_values[0][value / 100 % 10]; // Set value of hundreds (first display)

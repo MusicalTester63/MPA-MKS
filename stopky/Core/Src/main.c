@@ -34,6 +34,9 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
+#define DEBOUNCE_DELAY 100  // čas v milisekundách na debounce
+#define LED_TOGGLE_DELAY 100 // čas medzi prepínaním LED pri bliknutí
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -45,7 +48,11 @@
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-
+uint32_t elapsed_time = 0;
+uint32_t stop_time = 0;
+uint16_t display_value = 0;
+uint32_t start_time;
+uint8_t led_timer = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -58,14 +65,124 @@ static void MX_USART2_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+static enum {
+	running, stopped, reset
+} state = stopped;
+
+static enum {
+	sw_running, sw_stopped, sw_error
+} control_led_state = sw_stopped;
+
+static uint32_t last_toggle_time = 0;  // čas posledného prepnutia LED
+static uint8_t led_toggle_count = 0;   // počítadlo, koľkokrát bola LED prepnutá
+
+static uint16_t debounce1 = 0xFFFF;
+static uint16_t debounce2 = 0xFFFF;
 
 uint8_t get_dot_position(uint32_t seconds) {
 	if (seconds < 10) {
 		return 1; // Bodka na prvom displeji
-	} else if (seconds < 100) {
+	} else if (seconds < 60) {
 		return 2; // Bodka na druhom displeji
+	} else if (seconds < 600) {
+		return 1; //bodka na prvom displeji
 	} else {
-		return 3; // Bodka na treťom displeji
+		return 2; // Bodka na druhom displeji
+	}
+}
+
+void button_handler() {
+	debounce1 = (debounce1 << 1) | HAL_GPIO_ReadPin(S1_GPIO_Port, S1_Pin);
+	debounce2 = (debounce2 << 1) | HAL_GPIO_ReadPin(S2_GPIO_Port, S2_Pin);
+
+	if (debounce1 == 0x7FFF) {
+		if (state == stopped) {
+			state = reset;
+
+			for (uint8_t i = 0; i < 4; i++) {
+				HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
+				HAL_Delay(100);
+			}
+
+			start_time = HAL_GetTick();
+			stop_time = 0;
+			elapsed_time = 0;
+
+		} else if (state == running) {
+
+			for (uint8_t i = 0; i < 4; i++) {
+				HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
+				HAL_Delay(100);
+			}
+		}
+	}
+	if (debounce2 == 0x7FFF) {
+		if (state == stopped) {
+			state = running;
+
+			start_time = HAL_GetTick() - stop_time; // Zachovanie kontinuity času
+			stop_time = 0; // Resetovanie stop_time
+		} else if (state == running) {
+			state = stopped;
+			stop_time = HAL_GetTick() - start_time; // Uloženie uplynutého času
+		}
+	}
+}
+
+void button_handler2() {
+	debounce1 = (debounce1 << 1) | HAL_GPIO_ReadPin(S1_GPIO_Port, S1_Pin);
+	debounce2 = (debounce2 << 1) | HAL_GPIO_ReadPin(S2_GPIO_Port, S2_Pin);
+
+	if (debounce1 == 0x7FFF) {
+		if (state == stopped) {
+			state = reset;
+			start_time = HAL_GetTick();
+			stop_time = 0;
+			elapsed_time = 0;
+
+		} else if (state == running) {
+			control_led_state = sw_error;
+		}
+	}
+	if (debounce2 == 0x7FFF) {
+		if (state == stopped) {
+			state = running;
+			control_led_state = sw_running;
+			start_time = HAL_GetTick() - stop_time; // Zachovanie kontinuity času
+			stop_time = 0; // Resetovanie stop_time
+		} else if (state == running) {
+			state = stopped;
+			control_led_state = sw_stopped;
+			stop_time = HAL_GetTick() - start_time; // Uloženie uplynutého času
+		}
+	}
+}
+
+void led_controller() {
+	uint32_t current_time = HAL_GetTick();
+
+	switch (control_led_state) {
+	case sw_error:
+		if (current_time - last_toggle_time >= LED_TOGGLE_DELAY) {
+			last_toggle_time = current_time;
+			HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
+			if (led_toggle_count >= 5) {
+				control_led_state = sw_running;
+				last_toggle_time = 0;
+				led_toggle_count = 0;
+			} else {
+				led_toggle_count++;
+			}
+		}
+		break;
+	case sw_running:
+		HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, 0);
+		HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, 0);
+
+		break;
+	case sw_stopped:
+		HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, 1);
+		break;
 	}
 }
 
@@ -101,14 +218,7 @@ int main(void) {
 	MX_GPIO_Init();
 	MX_USART2_UART_Init();
 	/* USER CODE BEGIN 2 */
-	uint32_t elapsed_time = 0;
-	uint32_t stop_time = 0;
-	uint16_t display_value = 0;
-	uint32_t start_time = HAL_GetTick(); // Začiatočný čas
-	uint8_t led_timer = 0;
-	static uint16_t debounce1 = 0xFFFF;
-	static uint16_t debounce2 = 0xFFFF;
-
+	start_time = HAL_GetTick(); // Začiatočný čas
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
@@ -116,80 +226,60 @@ int main(void) {
 	while (1) {
 
 		/* USER CODE BEGIN 3 */
-
-		static enum {
-			running, stopped, reset
-		} state = stopped;
-
-		debounce1 = (debounce1 << 1) | HAL_GPIO_ReadPin(S1_GPIO_Port, S1_Pin);
-		debounce2 = (debounce2 << 1) | HAL_GPIO_ReadPin(S2_GPIO_Port, S2_Pin);
-
-		if (debounce1 == 0x7FFF) {
-			if (state == stopped) {
-				state = reset;
-				start_time = HAL_GetTick();
-				stop_time = 0;
-				elapsed_time = 0;
-
-			} else if (state == running) {
-
-				for (uint8_t i = 0; i < 4; i++) {
-					sct_value(display_value, 0, 8);
-					HAL_Delay(100);
-					sct_value(display_value, 0, 0);
-					HAL_Delay(100);
-				}
-			}
-		}
-
-		if (debounce2 == 0x7FFF) {
-			if (state == stopped) {
-				state = running;
-				start_time = HAL_GetTick() - stop_time; // Zachovanie kontinuity času
-				stop_time = 0; // Resetovanie stop_time
-			} else if (state == running) {
-				state = stopped;
-				stop_time = HAL_GetTick() - start_time; // Uloženie uplynutého času
-			}
-		}
+		button_handler2();
+		led_controller();
 
 		switch (state) {
 
 		case running:
-			elapsed_time = HAL_GetTick() - start_time + stop_time; // Počet milisekúnd od začiatku
-			uint32_t total_centiseconds = elapsed_time / 10; // Celkový čas v stotinách sekundy
+			// Prepočítanie času
+			elapsed_time = HAL_GetTick() - start_time + stop_time;
+			uint32_t total_centiseconds = elapsed_time / 10;
 
-			if (total_centiseconds >= 99900) { // Zastavenie stopiek pri 999 sekundách
+			// Ak čas presiahol limit 15 minút
+			if (total_centiseconds >= 90200) {
 				state = stopped;
 				break;
 			}
-			// Pridanie bloku na výpočet hodnoty pre led_timer
-			led_timer = (total_centiseconds % 100) / 10; // Získa desiatky stotín
 
-			if (total_centiseconds < 1000) { // Menej ako 10 sekúnd
-				uint8_t seconds = total_centiseconds / 100;
-				uint8_t centiseconds = total_centiseconds % 100;
-				display_value = (seconds * 100) + centiseconds;
+			// Výpočet LED animácie
+			led_timer = (total_centiseconds % 100) / 10;
 
-			} else if (total_centiseconds < 10000) { // Menej ako 100 sekúnd
-				uint8_t tens_of_seconds = total_centiseconds / 100;
-				uint8_t tenths_of_second = (total_centiseconds % 100) / 10;
-				display_value = (tens_of_seconds * 10) + tenths_of_second;
+			// Nastavenie hodnoty pre displej podľa času
+			if (total_centiseconds < 1000) {
+				// Menej ako 10 sekúnd
+				display_value = total_centiseconds;
 
-			} else { // 100 sekúnd alebo viac
-				uint16_t seconds = total_centiseconds / 100;
-				display_value = seconds;
+			} else if (total_centiseconds < 6000) {
+				// Menej ako 60 sekúnd
+				uint8_t seconds = total_centiseconds / 10;
+				uint8_t tenths_of_seconds = (total_centiseconds % 100) / 10;
+				display_value = seconds + tenths_of_seconds;
+
+			} else if (total_centiseconds < 60000) {
+				// Menej ako 10 minút
+				uint8_t minutes = total_centiseconds / 6000;
+				uint8_t seconds = (total_centiseconds / 100) % 60;
+				uint8_t tens_of_seconds = seconds / 10;
+				uint8_t units_of_seconds = seconds % 10;
+
+				display_value = (minutes * 100) + (tens_of_seconds * 10)
+						+ units_of_seconds;
+			} else {
+				// Nad 10 minút
+				led_timer = ((total_centiseconds / 100) % 60) % 10;
+				display_value = ((total_centiseconds / 6000) * 10)
+						+ (((total_centiseconds / 100) / 10) % 6);
 			}
 
-			uint8_t dot_position = get_dot_position(total_centiseconds / 100); // Získať pozíciu bodky
-			sct_value(display_value, dot_position, led_timer); // Aktualizácia displeja s bodkou
-			HAL_Delay(10); // Aktualizácia každých 10 ms
+			// Nastavenie bodky a aktualizácia displeja
+			uint8_t dot_position = get_dot_position(total_centiseconds / 100);
+			sct_value(display_value, dot_position, led_timer);
 			break;
 
 		case stopped:
 			elapsed_time = stop_time;
-			sct_value(display_value, dot_position, 8); // Aktualizácia displeja s bodkou
-			HAL_Delay(10); // Aktualizácia každých 10 ms
+			sct_value(display_value, dot_position, led_timer); // Aktualizácia displeja s bodkou
 			break;
 
 		case reset:
@@ -197,6 +287,7 @@ int main(void) {
 			stop_time = 0;
 			elapsed_time = 0;
 			display_value = 0;
+			led_timer = 0;
 			state = stopped;
 			break;
 		}
@@ -204,6 +295,68 @@ int main(void) {
 	}
 	/* USER CODE END WHILE */
 
+	/* USER CODE BEGIN 3 */
+
+	button_handler();
+
+	switch (state) {
+
+	case running:
+		// Prepočítanie času
+		elapsed_time = HAL_GetTick() - start_time + stop_time;
+		uint32_t total_centiseconds = elapsed_time / 10;
+
+		// Ak čas presiahol limit 15 minút
+		if (total_centiseconds >= 90200) {
+			state = stopped;
+			break;
+		}
+
+		// Výpočet LED animácie
+		led_timer = (total_centiseconds % 100) / 10;
+
+		// Nastavenie hodnoty pre displej podľa času
+		if (total_centiseconds < 1000) {
+			// Menej ako 10 sekúnd
+			display_value = total_centiseconds;
+		} else if (total_centiseconds < 6000) {
+			// Menej ako 60 sekúnd
+			display_value = ((total_centiseconds / 100) * 10)
+					+ ((total_centiseconds % 100) / 10);
+		} else if (total_centiseconds < 60000) {
+			// Menej ako 10 minút
+			uint8_t minutes = total_centiseconds / 6000;             // Minúty
+			uint8_t seconds = (total_centiseconds / 100) % 60;       // Sekundy
+			uint8_t tens_of_seconds = seconds / 10;           // Desiatky sekúnd
+			uint8_t units_of_seconds = seconds % 10;          // Jednotky sekúnd
+
+			display_value = (minutes * 100) + (tens_of_seconds * 10)
+					+ units_of_seconds;
+		} else {
+			// Nad 10 minút
+			display_value = ((total_centiseconds / 6000) * 10)
+					+ (((total_centiseconds / 100) / 10) % 6);
+		}
+
+		// Nastavenie bodky a aktualizácia displeja
+		uint8_t dot_position = get_dot_position(total_centiseconds / 100);
+		sct_value(display_value, dot_position, led_timer);
+		break;
+
+	case stopped:
+		elapsed_time = stop_time;
+		sct_value(display_value, dot_position, led_timer); // Aktualizácia displeja s bodkou
+		break;
+
+	case reset:
+		start_time = HAL_GetTick();
+		stop_time = 0;
+		elapsed_time = 0;
+		display_value = 0;
+		state = stopped;
+		break;
+	}
+	/* USER CODE END 3 */
 }
 
 /**
@@ -291,11 +444,12 @@ static void MX_GPIO_Init(void) {
 	__HAL_RCC_GPIOB_CLK_ENABLE();
 
 	/*Configure GPIO pin Output Level */
-	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, LED1_Pin | LD2_Pin, GPIO_PIN_RESET);
 
 	/*Configure GPIO pin Output Level */
 	HAL_GPIO_WritePin(GPIOB,
-	SCT_NOE_Pin | SCT_CLK_Pin | SCT_SDI_Pin | SCT_NLA_Pin, GPIO_PIN_RESET);
+	LED2_Pin | SCT_NOE_Pin | SCT_CLK_Pin | SCT_SDI_Pin | SCT_NLA_Pin,
+			GPIO_PIN_RESET);
 
 	/*Configure GPIO pin : B1_Pin */
 	GPIO_InitStruct.Pin = B1_Pin;
@@ -309,15 +463,17 @@ static void MX_GPIO_Init(void) {
 	GPIO_InitStruct.Pull = GPIO_PULLUP;
 	HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-	/*Configure GPIO pin : LD2_Pin */
-	GPIO_InitStruct.Pin = LD2_Pin;
+	/*Configure GPIO pins : LED1_Pin LD2_Pin */
+	GPIO_InitStruct.Pin = LED1_Pin | LD2_Pin;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
+	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-	/*Configure GPIO pins : SCT_NOE_Pin SCT_CLK_Pin SCT_SDI_Pin SCT_NLA_Pin */
-	GPIO_InitStruct.Pin = SCT_NOE_Pin | SCT_CLK_Pin | SCT_SDI_Pin | SCT_NLA_Pin;
+	/*Configure GPIO pins : LED2_Pin SCT_NOE_Pin SCT_CLK_Pin SCT_SDI_Pin
+	 SCT_NLA_Pin */
+	GPIO_InitStruct.Pin = LED2_Pin | SCT_NOE_Pin | SCT_CLK_Pin | SCT_SDI_Pin
+			| SCT_NLA_Pin;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
