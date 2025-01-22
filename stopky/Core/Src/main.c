@@ -251,10 +251,9 @@ int main(void) {
 				display_value = total_centiseconds;
 
 			} else if (total_centiseconds < 6000) {
+
 				// Menej ako 60 sekúnd
-				uint8_t seconds = total_centiseconds / 10;
-				uint8_t tenths_of_seconds = (total_centiseconds % 100) / 10;
-				display_value = seconds + tenths_of_seconds;
+				display_value = ((total_centiseconds / 100) * 10) + ((total_centiseconds % 100) / 10);
 
 			} else if (total_centiseconds < 60000) {
 				// Menej ako 10 minút
@@ -293,70 +292,6 @@ int main(void) {
 		}
 		/* USER CODE END 3 */
 	}
-	/* USER CODE END WHILE */
-
-	/* USER CODE BEGIN 3 */
-
-	button_handler();
-
-	switch (state) {
-
-	case running:
-		// Prepočítanie času
-		elapsed_time = HAL_GetTick() - start_time + stop_time;
-		uint32_t total_centiseconds = elapsed_time / 10;
-
-		// Ak čas presiahol limit 15 minút
-		if (total_centiseconds >= 90200) {
-			state = stopped;
-			break;
-		}
-
-		// Výpočet LED animácie
-		led_timer = (total_centiseconds % 100) / 10;
-
-		// Nastavenie hodnoty pre displej podľa času
-		if (total_centiseconds < 1000) {
-			// Menej ako 10 sekúnd
-			display_value = total_centiseconds;
-		} else if (total_centiseconds < 6000) {
-			// Menej ako 60 sekúnd
-			display_value = ((total_centiseconds / 100) * 10)
-					+ ((total_centiseconds % 100) / 10);
-		} else if (total_centiseconds < 60000) {
-			// Menej ako 10 minút
-			uint8_t minutes = total_centiseconds / 6000;             // Minúty
-			uint8_t seconds = (total_centiseconds / 100) % 60;       // Sekundy
-			uint8_t tens_of_seconds = seconds / 10;           // Desiatky sekúnd
-			uint8_t units_of_seconds = seconds % 10;          // Jednotky sekúnd
-
-			display_value = (minutes * 100) + (tens_of_seconds * 10)
-					+ units_of_seconds;
-		} else {
-			// Nad 10 minút
-			display_value = ((total_centiseconds / 6000) * 10)
-					+ (((total_centiseconds / 100) / 10) % 6);
-		}
-
-		// Nastavenie bodky a aktualizácia displeja
-		uint8_t dot_position = get_dot_position(total_centiseconds / 100);
-		sct_value(display_value, dot_position, led_timer);
-		break;
-
-	case stopped:
-		elapsed_time = stop_time;
-		sct_value(display_value, dot_position, led_timer); // Aktualizácia displeja s bodkou
-		break;
-
-	case reset:
-		start_time = HAL_GetTick();
-		stop_time = 0;
-		elapsed_time = 0;
-		display_value = 0;
-		state = stopped;
-		break;
-	}
-	/* USER CODE END 3 */
 }
 
 /**
